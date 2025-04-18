@@ -33,15 +33,15 @@ class Mamba(nn.Module):
         embedded = self.embedding(input_ids)
         x = embedded.clone()
         for layer in self.layers1:
-            x_pos = layer(x)
-        x_pos = self.norm_f(x_pos)
+            x_1 = layer(x)
+        x_1 = self.norm_f(x_1)
         for layer in self.layers2:
-            x_rev = layer(x)
-        x_rev = self.norm_f(x_rev)
+            x_2 = layer(x)
+        x_2 = self.norm_f(x_2)
         for layer in self.layers3:
             x_3 = layer(x)
         x_3 = self.norm_f(x_3)
-        x = self.fusion_module(x_pos, x_rev, x_3)
+        x = self.fusion_module(x_1, x_2, x_3)
         x = torch.flatten(x, start_dim=1)
         logits = self.LastDense(x)
         logits = logits.squeeze(dim=1)
