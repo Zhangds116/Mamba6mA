@@ -9,7 +9,6 @@ def read_dna_sequences(file_path):
             sequences.append(sequence)
     return sequences
 
-
 def map_to_indices(sequences):
     base_to_index = {'A': 0, 'C': 1, 'G': 2, 'T': 3}
     mapped_sequences = []
