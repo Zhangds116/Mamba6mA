@@ -3,7 +3,7 @@ import math
 
 class ModelArgs:
     d_model: int = 64
-    n_layer: int = 6
+    n_layer: int = 2
     vocab_size: int = 4
     d_state: int = 16
     expand: int = 4
