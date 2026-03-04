@@ -2,6 +2,8 @@
 
 系统能够自动抓取新闻 → 通过大模型进行结构化抽取 → 根据关键词分类入库 → 实现即时邮件提醒与每日摘要邮件推送 → 提供 Web 可视化管理界面。
 
+
+
 📌 项目特性
 
 📰 自动抓取新闻 API
@@ -18,20 +20,8 @@
 
 🌐 Web 可视化管理界面
 
-🏗 系统架构
-新闻API
-   ↓
-fetch_news.py
-   ↓
-Ollama LLM 结构化抽取
-   ↓
-Redis 去重
-   ↓
-数据库存储
-   ↓
-┌─────────────┬─────────────┐
-│ 即时邮件通知 │ 定时摘要邮件 │
-└─────────────┴─────────────┘
+、
+
 🧠 AI 在系统中的作用
 
 大模型负责：
@@ -52,6 +42,10 @@ Redis 去重
 
 不是简单字符串匹配，而是语义级理解与分类。
 
+
+
+
+
 🛠 技术栈
 
 Web 框架：FastAPI
@@ -70,6 +64,10 @@ LLM：Ollama（本地大模型）
 
 模板引擎：Jinja2
 
+
+
+
+
 📂 项目结构
 .
 ├── app.py                # FastAPI Web服务
@@ -81,6 +79,10 @@ LLM：Ollama（本地大模型）
 ├── config.py             # 配置文件
 ├── templates/            # 前端页面模板
 └── requirements.txt
+
+
+
+
 ⚙️ 环境要求
 
 Python 3.10+
@@ -98,11 +100,11 @@ cd ai-news-tracking
 2️⃣ 安装依赖
 pip install -r requirements.txt
 3️⃣ 配置 config.py
-DATABASE_URL = "sqlite:///./news.db"
+DATABASE_URL = "数据库路径"
 
 API_URL = "https://orz.ai/api/v1/dailynews/?platform=tenxunwang"
 
-OLLAMA_MODEL = "qwen3:8b"
+OLLAMA_MODEL = "ollama部署的大模型名称"
 
 EMAIL_HOST = "smtp.qq.com"
 EMAIL_PORT = 465
@@ -134,6 +136,8 @@ news:immediate:{hash}:{keyword} —— 即时邮件去重
 
 避免重复入库和重复通知。
 
+
+
 📩 即时通知逻辑
 
 当新闻：
@@ -144,6 +148,9 @@ news:immediate:{hash}:{keyword} —— 即时邮件去重
 
 立即发送邮件提醒。
 
+
+
+
 🕒 定时摘要机制
 
 每分钟检查一次
@@ -153,6 +160,9 @@ news:immediate:{hash}:{keyword} —— 即时邮件去重
 汇总最近 24 小时新闻
 
 使用 LLM 生成专栏整体摘要
+
+
+
 
 🌐 Web 管理功能
 
@@ -169,6 +179,9 @@ news:immediate:{hash}:{keyword} —— 即时邮件去重
 开启/关闭即时通知
 
 手动触发摘要发送
+
+
+
 
 🚀 可扩展方向
 
